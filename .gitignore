@@ -2,8 +2,9 @@
 # auto generated
 extension/version_auto.h
 
-# build directory
+# build files
 build/
+extension/msvc/
 
 # thirdparty
 google-breakpad/android/
@@ -12,6 +13,7 @@ google-breakpad/src/client/apple/
 google-breakpad/src/client/ios/
 google-breakpad/src/client/mac/
 google-breakpad/src/client/solaris/
+google-breakpad/src/client/windows/
 google-breakpad/src/client/windows/sender/
 google-breakpad/src/client/windows/tests/
 google-breakpad/src/client/windows/unittests/
