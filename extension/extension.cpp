@@ -95,10 +95,18 @@ LONG CALLBACK BreakpadVectoredHandler(_In_ PEXCEPTION_POINTERS ExceptionInfo)
 {
 	switch (ExceptionInfo->ExceptionRecord->ExceptionCode)
 	{
+		case 0: /* Sys_Error and friends use this */
+		{
+			if (ExceptionInfo->ExceptionRecord->ExceptionFlags & EXCEPTION_NONCONTINUABLE)
+				break;
+
+			return EXCEPTION_CONTINUE_SEARCH;
+		}
 		case EXCEPTION_ACCESS_VIOLATION:
 		case EXCEPTION_ARRAY_BOUNDS_EXCEEDED:
 		case EXCEPTION_DATATYPE_MISALIGNMENT:
 		case EXCEPTION_ILLEGAL_INSTRUCTION:
+		case EXCEPTION_INT_DIVIDE_BY_ZERO:
 		case EXCEPTION_STACK_OVERFLOW:
 			break;
 		default:
